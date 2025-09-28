@@ -1,5 +1,3 @@
-$1
-
 ## O que é o Projeto Panama? 🧰
 
 O **Projeto Panama** é uma iniciativa do OpenJDK para tornar a interoperabilidade do Java com **código e dados nativos** mais simples, segura e eficiente, reduzindo (ou eliminando) a necessidade de escrever **JNI** manualmente. No Java 25, a peça central é a **Foreign Function & Memory (FFM) API**, que permite:
