@@ -1,4 +1,22 @@
-# PoC — Project Panama (Java 25)
+$1
+## O que é o Projeto Panama?
+
+O **Projeto Panama** é uma iniciativa do OpenJDK para tornar a interoperabilidade do Java com **código e dados nativos** mais simples, segura e eficiente, reduzindo (ou eliminando) a necessidade de escrever **JNI** manualmente. No Java 25, a peça central é a **Foreign Function & Memory (FFM) API**, que permite:
+
+- **Chamar funções nativas** diretamente (*downcalls*) e **expor funções Java** para bibliotecas nativas (*upcalls*).
+- **Acessar memória off-heap com segurança** usando `MemorySegment` e **arenas com escopo** (`Arena.ofConfined`, `Arena.ofShared`).
+- **Descrever layouts C** (structs, arrays, alinhamento) com `MemoryLayout` e acessar campos com `VarHandle`.
+- **Resolver símbolos** em bibliotecas do sistema ou em DLL/SO específicos com `SymbolLookup`/`Linker`.
+- Tratar casos avançados: **funções variádicas** (`printf`), **captura de estado** de chamada (ex.: `errno`), **ponteiros de função** e tipos portáveis (ex.: `size_t` via `canonicalLayouts()`).
+
+**Por que usar?**
+- **Performance** e menos cópias (dados fora do heap, sem *glue code* JNI).
+- **Segurança de memória** com escopos/validação e melhor ergonomia que JNI.
+- **Portabilidade**: o mesmo código roda em **Windows / Linux / macOS**.
+
+**Ferramenta relacionada**
+- **`jextract`** (fora do JDK) pode gerar *bindings* Java diretamente de *headers* C — opcional, mas acelera muito o desenvolvimento.
+
 
 Este repositório demonstra o uso da **Foreign Function & Memory API** (Project Panama) do **Java 25** por meio de exemplos pequenos e diretos, além de benchmarks comparando Java × nativo.
 
@@ -241,7 +259,7 @@ mvn -q exec:java \
 poc-project-panama/
 ├─ pom.xml
 ├─ .mvn/
-│   └─ jvm.config            # --enable-native-access=ALL-UNNAMED
+│   └─ jvm.config            # (opcional) --enable-native-access=ALL-UNNAMED
 ├─ native/
 │   └─ intsrtcxx.cpp         # DLL/SO com sort, I/O e radix sort
 └─ src/main/java/
@@ -309,8 +327,15 @@ poc-project-panama/
   </plugins>
 </build>
 ```
+
+---
+
+## Licença
+Defina a licença do projeto (ex.: MIT).
+
 ---
 
 ## Referências úteis
 - Javadoc do pacote **`java.lang.foreign`** (JDK 25): arenas, layouts, var handles, linker.
 - Documentação do `Linker` (downcalls, upcalls, variádicos, `captureCallState`).
+
