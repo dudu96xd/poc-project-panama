@@ -309,12 +309,6 @@ poc-project-panama/
   </plugins>
 </build>
 ```
-
----
-
-## Licença
-Defina a licença do projeto (ex.: MIT).
-
 ---
 
 ## Referências úteis
