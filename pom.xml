@@ -21,19 +21,6 @@
                     <release>25</release>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.5.1</version>
-                <configuration>
-                    <mainClass>PanamaExample</mainClass>
-                    <jvmArgs>
-                        <!-- Necessário para permitir acesso nativo em runtime -->
-                        <jvmArg>--enable-native-access=ALL-UNNAMED</jvmArg>
-                    </jvmArgs>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 </project>
