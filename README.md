@@ -241,7 +241,7 @@ mvn -q exec:java \
 poc-project-panama/
 ├─ pom.xml
 ├─ .mvn/
-│   └─ jvm.config            # (opcional) --enable-native-access=ALL-UNNAMED
+│   └─ jvm.config            # --enable-native-access=ALL-UNNAMED
 ├─ native/
 │   └─ intsrtcxx.cpp         # DLL/SO com sort, I/O e radix sort
 └─ src/main/java/
