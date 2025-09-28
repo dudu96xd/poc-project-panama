@@ -85,10 +85,10 @@ private static boolean isSortedAsc(int[] a) {
     return true;
 }
 
-private static boolean isWindows() {
+static boolean isWindows() {
     return System.getProperty("os.name").toLowerCase().contains("win");
 }
 
-private static boolean isMac() {
+static boolean isMac() {
     return System.getProperty("os.name").toLowerCase().contains("mac");
 }
